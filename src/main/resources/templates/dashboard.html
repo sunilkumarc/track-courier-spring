@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Track Courier</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<h1>Dashboard</h1><hr/>
+		<a href="/">Home</a>  |
+		<a href="/add-courier.html">Add Courier</a>  |
+		<a href="/update-courier.html">Update Courier</a>
+		<h3>Welcome <span th:text="${User.name}"></span></h3>
+		Username : <span th:text="${User.username}" /><br/>
+		Email ID : <span th:text="${User.emailId}" /><br/><br/>
+		
+		<h4>Courier Details</h4>
+		<table class="table table-bordered table-striped">
+	        <thead>
+	          <tr>
+	            <th>Courier ID</th>
+	            <th>Status</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	        	<tr th:each="parcel : ${Couriers}">
+				    <td th:text="${parcel.parcelId}">Name</td>
+				    <td th:text="${parcel.status}">Name</td>	
+				</tr>
+	        </tbody>
+	      </table>
+	</div>
+</body>
+</html>
