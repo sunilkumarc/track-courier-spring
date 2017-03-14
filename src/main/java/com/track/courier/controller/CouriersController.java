@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.track.courier.dao.CouriersDAO;
@@ -29,9 +30,11 @@ public class CouriersController {
 	}
 
 	@GetMapping("/couriers")
-	public Courier getSingleCourier() {
-		Courier courier = couriersDAO.getSingleCourier("123");
-		System.out.println(courier.getColor());
-		return courier;
+	public ModelAndView getSingleCourier(@RequestParam String courierId) {
+		Courier courier = couriersDAO.getSingleCourier(courierId);
+
+		ModelAndView dashboardView = new ModelAndView("courier-details");
+		dashboardView.addObject("Courier", courier);
+		return dashboardView;
 	}
 }

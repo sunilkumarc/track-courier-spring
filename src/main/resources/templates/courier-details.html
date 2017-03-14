@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Track Courier</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<h1>Courier Details</h1><hr/>
+	    <table class="table table-bordered" th:if="${Courier != null}">
+          <tbody>
+              <tr>
+                  <th>Parcel ID</th>
+                  <td th:text="${Courier.parcelId}"></td>
+              </tr>
+              <tr>
+                  <th>From</th>
+                  <td th:text="${Courier.fromPersonName}"></td>
+              </tr>
+              <tr>
+                  <th>To</th>
+                  <td th:text="${Courier.toPersonName}"></td>
+              </tr>
+              <tr>
+                  <th>Color</th>
+                  <td th:text="${Courier.color}"></td>
+              </tr>
+              <tr>
+                  <th>Weight</th>
+                  <td th:text="${Courier.weight}"></td>
+              </tr>
+              <tr>
+                  <th>Status</th>
+                  <td th:text="${Courier.status}"></td>
+              </tr>
+              <tr>
+                  <th>Service Price</th>
+                  <td th:text="${Courier.servicePrice}"></td>
+              </tr>
+              <tr>
+                  <th>Dispatched On</th>
+                  <td th:text="${Courier.dispatchedOn}"></td>
+              </tr>
+              <tr>
+                  <th>Expected Delivery</th>
+                  <td th:text="${Courier.expectedDelivery}"></td>
+              </tr>
+              <tr>
+                  <th>Sender Address</th>
+                  <td th:text="${Courier.senderAddress}"></td>
+              </tr>
+              <tr>
+                  <th>Receiver Address</th>
+                  <td th:text="${Courier.receiverAddress}"></td>
+              </tr>
+              <tr>
+                  <th>Sender Phone No</th>
+                  <td th:text="${Courier.senderPhoneNo}"></td>
+              </tr>
+              <tr>
+                  <th>Receiver Phone No</th>
+                  <td th:text="${Courier.receiverPhoneNo}"></td>
+              </tr>
+          </tbody>
+        </table>
+        <h4 th:if="${Courier == null}">Courier Doesn't Exist.</h4>
+        <a class="btn btn-primary" href="/">Back</a>
+	</div>
+</body>
+</html>

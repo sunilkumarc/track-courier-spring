@@ -3,8 +3,21 @@
 <head>
     <title>Track Courier</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css" />
 </head>
 <body>
-	<h2>Login</h2>
+	<div class="container">
+		<h2>Login</h2><hr/>
+		<form method="POST" id="login-form">
+			<label>Name</label>
+			<input type="text" name="name"/>
+
+			<label>Password</label>
+			<input type="password" name="password"/>
+			<br/>
+			<button type="submit" class="btn btn-primary">Login</button>
+			<a class="btn btn-primary" href="/">Back</a>
+		</form>
+	</div>
 </body>
 </html>

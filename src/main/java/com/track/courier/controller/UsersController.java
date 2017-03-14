@@ -36,6 +36,12 @@ public class UsersController {
 
 		return new ModelAndView("register");
 	}
+	
+	@GetMapping("/users/login")
+	public ModelAndView loginPage(Model model) {
+
+		return new ModelAndView("login");
+	}
 
 	@PostMapping("/users/dashboard")
 	public ModelAndView registerUser(@ModelAttribute User user) {
@@ -46,7 +52,6 @@ public class UsersController {
 
 		List<Courier> couriers = couriersDAO.findAll();
 		dashboardView.addObject("Couriers", couriers);
-		
 
 		return dashboardView;
 	}
