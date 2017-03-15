@@ -8,11 +8,15 @@ import com.track.courier.model.UserRepository;
 
 @Component
 public class UsersDAO {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
 	public User registerUser(User user) {
 		return userRepository.save(user);
+	}
+
+	public User findUser(String username, String password) {
+		return userRepository.findUser(username, password);
 	}
 }

@@ -37,4 +37,14 @@ public class CouriersController {
 		dashboardView.addObject("Courier", courier);
 		return dashboardView;
 	}
+
+	@GetMapping("/couriers/add")
+	public ModelAndView addCourierPage() {
+		return new ModelAndView("add-courier");
+	}
+	
+	@GetMapping("/couriers/update")
+	public ModelAndView updateCourierPage() {
+		return new ModelAndView("update-courier");
+	}
 }

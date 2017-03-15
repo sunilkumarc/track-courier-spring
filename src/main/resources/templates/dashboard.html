@@ -9,11 +9,11 @@
 	<div class="container">
 		<h1>Dashboard</h1><hr/>
 		<a href="/">Home</a>  |
-		<a href="/add-courier.html">Add Courier</a>  |
-		<a href="/update-courier.html">Update Courier</a>
+		<a href="/couriers/add">Add Courier</a>  |
+		<a href="/couriers/update">Update Courier</a>
 		<h3>Welcome <span th:text="${User.name}"></span></h3>
-		Username : <span th:text="${User.username}" /><br/>
-		Email ID : <span th:text="${User.emailId}" /><br/><br/>
+		Username : <span th:text="${User.username}"></span><br/>
+		Email ID : <span th:text="${User.emailId}"></span><br/><br/>
 		
 		<h4>Courier Details</h4>
 		<table class="table table-bordered table-striped">
