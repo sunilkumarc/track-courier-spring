@@ -11,11 +11,13 @@
 		<form method="POST" id="login-form" action="/users/login">
 			<label>Username</label>
 			<input type="text" name="username"/>
+			<span th:if="${username_empty != null}" th:text="${username_empty}" style="color:red"></span>
 
 			<label>Password</label>
 			<input type="password" name="password"/>
+			<span th:if="${password_empty != null}" th:text="${password_empty}" style="color:red"></span>
 			<br/>
-			<div th:if="${user_not_exists != null}" th:text="${user_not_exists}" style="color:red"></div>
+			<span th:if="${user_not_exists != null}" th:text="${user_not_exists}" style="color:red"></span>
 			<button type="submit" class="btn btn-primary">Login</button>
 			<a class="btn btn-primary" href="/">Back</a>
 		</form>

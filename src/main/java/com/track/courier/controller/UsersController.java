@@ -55,6 +55,18 @@ public class UsersController {
 	@PostMapping("/users/login")
 	public ModelAndView loginAndRedirect(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
 
+		if (user.getUsername().isEmpty() || user.getPassword().isEmpty()) {
+			ModelAndView loginView = new ModelAndView("login");
+			
+			if (user.getUsername().isEmpty())
+				loginView.addObject("username_empty", "Username cannot be empty");
+			
+			if (user.getPassword().isEmpty())
+				loginView.addObject("password_empty", "Password cannot be empty");
+			
+			return loginView;
+		}
+		
 		ModelAndView model = new ModelAndView(new RedirectView("dashboard"));
 		User exisingUser = usersDAO.findUser(user.getUsername(), user.getPassword());
 		redirectAttributes.addFlashAttribute("user", exisingUser);
@@ -64,9 +76,37 @@ public class UsersController {
 		return model;
 	}
 
-	@PostMapping("/users/dashboard")
+	@PostMapping("/users/register")
 	public ModelAndView registerUser(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
+		
+		ModelAndView registerView = new ModelAndView("register");
+		
+		if (user.getName().isEmpty())
+			registerView.addObject("name_empty", "Name cannot be empty");
+		
+		if (user.getEmailId().isEmpty())
+			registerView.addObject("email_id_empty", "Email Id cannot be empty");
+		
+		if (user.getUsername().isEmpty())
+			registerView.addObject("username_empty", "Username cannot be empty");
+		
+		if (user.getPassword().isEmpty())
+			registerView.addObject("password_empty", "Password cannot be empty");
 
+		if (user.getName().isEmpty() || user.getUsername().isEmpty() || user.getEmailId().isEmpty() || user.getPassword().isEmpty())
+			return registerView;
+		
+		User existingUser = usersDAO.findUserByUsernameOrEmailId(user.getUsername(), user.getEmailId());
+		if (existingUser != null) {
+			if (existingUser.getUsername().equalsIgnoreCase(user.getUsername()))
+				registerView.addObject("username_exists", "Username already exists");
+			
+			if (existingUser.getEmailId().equalsIgnoreCase(user.getEmailId()))
+				registerView.addObject("email_id_exists", "Email id already exists");
+			
+			return registerView;
+		}
+		
 		User registeredUser = usersDAO.registerUser(user);
 		List<Courier> couriers = couriersDAO.findAll();
 

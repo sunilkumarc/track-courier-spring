@@ -8,18 +8,24 @@
 <body>
 	<div class="container">
 		<h2>Register</h2><hr/>
-		<form method="POST" id="register-form" action="/users/dashboard">
+		<form method="POST" id="register-form" action="/users/register">
 			<label>Name</label>
 			<input type="text" name="name"/>
+			<span th:if="${name_empty != null}" th:text="${name_empty}" style="color:red"></span>
 			
 			<label>Username</label>
 			<input type="text" name="username"/>
+			<span th:if="${username_exists != null}" th:text="${username_exists}" style="color:red"></span>
+			<span th:if="${username_empty != null}" th:text="${username_empty}" style="color:red"></span>
 			
 			<label>Email ID</label>
 			<input type="text" name="emailId"/>
+			<span th:if="${email_id_exists != null}" th:text="${email_id_exists}" style="color:red"></span>
+			<span th:if="${email_id_empty != null}" th:text="${email_id_empty}" style="color:red"></span>
 			
 			<label>Password</label>
 			<input type="password" name="password"/>
+			<span th:if="${password_empty != null}" th:text="${password_empty}" style="color:red"></span>
 			<br/>
 			<button type="submit" class="btn btn-primary">Register</button>
 			<a class="btn btn-primary" href="/">Back</a>

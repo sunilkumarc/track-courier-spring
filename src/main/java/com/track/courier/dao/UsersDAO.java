@@ -19,4 +19,8 @@ public class UsersDAO {
 	public User findUser(String username, String password) {
 		return userRepository.findUser(username, password);
 	}
+	
+	public User findUserByUsernameOrEmailId(String username, String emailId) {
+		return userRepository.findByUsernameOrEmailId(username, emailId);
+	}
 }
